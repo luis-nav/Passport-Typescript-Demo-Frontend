@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import { myContext } from "./Context";
+
 const Homepage = () => {
-    return <div>Home</div>;
+    const ctx = useContext(myContext)
+
+    return <div>{ctx}</div>;
 };
 
 export default Homepage;
