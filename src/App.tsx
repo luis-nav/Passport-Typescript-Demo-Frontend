@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import './main.css'
 import Context from "./pages/Context";
+import Register from "./pages/Register";
 
 
 
@@ -19,6 +20,7 @@ const App = () => {
                     <Route path='/admin' element={<AdminPage />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/profile' element={<Profile />} />
+                    <Route path='/register' element={<Register />} />
                 </Routes>
             </Context >
         </BrowserRouter>
