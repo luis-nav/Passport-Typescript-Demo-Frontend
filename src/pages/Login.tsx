@@ -11,8 +11,10 @@ const Login = () => {
                 if (res.data === 'Success') {
                     window.location.href = "/"
                 }
+            }, () => { //On Rejection
+                console.log("fail")
             })
-            .catch(e => {
+            .catch(e => { //Catch Error
                 console.log(e)
             })
     }
