@@ -8,7 +8,9 @@ const Login = () => {
     const login = () => {
         axios.post("http://localhost:8000/login", { username, password }, { withCredentials: true })
             .then(res => {
-                console.log(res.data)
+                if (res.data === 'Success') {
+                    window.location.href = "/"
+                }
             })
             .catch(e => {
                 console.log(e)

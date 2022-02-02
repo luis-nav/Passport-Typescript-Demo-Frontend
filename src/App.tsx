@@ -5,24 +5,32 @@ import AdminPage from "./pages/AdminPage";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import './main.css'
-import Context from "./pages/Context";
+import { myContext } from "./pages/Context";
 import Register from "./pages/Register";
+import { useContext } from "react";
 
 
 
 const App = () => {
+    const ctx = useContext(myContext)
+
     return (
         <BrowserRouter>
-            <Context>
-                <Navbar />
-                <Routes>
-                    <Route path='' element={<Homepage />} />
-                    <Route path='/admin' element={<AdminPage />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/profile' element={<Profile />} />
-                    <Route path='/register' element={<Register />} />
-                </Routes>
-            </Context >
+            <Navbar />
+            <Routes>
+                <Route path='' element={<Homepage />} />
+                {ctx ? (
+                    <>
+                        <Route path='/profile' element={<Profile />} />
+                        {ctx.isAdmin && (<Route path='/admin' element={<AdminPage />} />)}
+                    </>
+                ) : (
+                    <>
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                    </>
+                )}
+            </Routes>
         </BrowserRouter>
     )
 };
