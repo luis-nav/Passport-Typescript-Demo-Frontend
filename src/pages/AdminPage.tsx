@@ -1,16 +1,17 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useContext, useEffect, useState } from "react";
+import { UserInterface } from "../interfaces/interfaces";
 import { myContext } from "./Context";
 
 const AdminPage = () => {
     const ctx = useContext(myContext)
 
-    const [data, setData] = useState<any>()
+    const [data, setData] = useState<UserInterface[]>([])
     const [selectedUser, setSelectedUser] = useState<string>("")
 
     useEffect(() => {
         axios.get("http://localhost:8000/getallusers", { withCredentials: true })
-            .then(res => {
+            .then((res: AxiosResponse) => {
                 setData(res.data)
             })
 
@@ -33,7 +34,7 @@ const AdminPage = () => {
             <select name="deleteuser" onChange={e => setSelectedUser(e.target.value)}>
                 <option value="" id="defaultoption">Select a user</option>
                 {
-                    data && data.map((item: any) => {
+                    data && data.map((item: UserInterface) => {
                         if (item.username !== ctx.username) {
                             return (
                                 <option id={item.username} value={item.id} key={item.id}>{item.username}</option>

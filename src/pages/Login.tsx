@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
 
 const Login = () => {
@@ -7,7 +7,7 @@ const Login = () => {
 
     const login = () => {
         axios.post("http://localhost:8000/login", { username, password }, { withCredentials: true })
-            .then(res => {
+            .then((res: AxiosResponse) => {
                 if (res.data === 'Success') {
                     window.location.href = "/"
                 }

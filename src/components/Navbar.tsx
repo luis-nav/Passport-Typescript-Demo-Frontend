@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { myContext } from "../pages/Context";
@@ -7,7 +7,7 @@ const Navbar = () => {
     const ctx = useContext(myContext)
 
     const logOut = () => {
-        axios.get("http://localhost:8000/logout", { withCredentials: true }).then(res => {
+        axios.get("http://localhost:8000/logout", { withCredentials: true }).then((res: AxiosResponse) => {
             if (res.data === 'Success') {
                 window.location.href = "/"
             }
