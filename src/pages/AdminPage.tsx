@@ -36,7 +36,7 @@ const AdminPage = () => {
                     data && data.map((item: any) => {
                         if (item.username !== ctx.username) {
                             return (
-                                <option id={item.username} value={item._id} key={item._id}>{item.username}</option>
+                                <option id={item.username} value={item.id} key={item.id}>{item.username}</option>
                             )
                         } else return null
                     })
